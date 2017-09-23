@@ -33,7 +33,7 @@ def stock_count(unit)
   return unit[:pets].length()
 end
 
-# # 8.
+# 8.
 def pets_by_breed(unit, breed)
   num_of_breed =[]
   for pet in unit[:pets]
@@ -55,7 +55,7 @@ def pets_by_breed2(unit, breed)
    return not_found
 end
 
-# 10.
+# 10/11.
 def find_pet_by_name(unit, name)
   pet_name = []
     for pet in unit[:pets]
@@ -64,16 +64,11 @@ def find_pet_by_name(unit, name)
       end
     end
     return pet_name[0]
-end
-
-# 11. I think im cheating with the return nil line?
-def find_pet_by_name2(unit, name)
-  for pet in unit[:pets]
-    if pet[:name] != name
+    if name != pet[:name]
       return nil
     end
-  end
 end
+
 
 # 12.
 def remove_pet_by_name (unit, name)
@@ -153,6 +148,7 @@ end
 #   # move pet to customer
 #
 #   # pet sold increases
+    # unit[:admin][:pets_sold] += 1
 #
 #   # price of pet deducted from customer and added to
 #   # total_cash
