@@ -55,23 +55,105 @@ def pets_by_breed2(unit, breed)
    return not_found
 end
 
-# # 10.
+# 10.
 def find_pet_by_name(unit, name)
+  pet_name = []
     for pet in unit[:pets]
       if pet[:name] == name
-        return name
+        pet_name << pet
       end
     end
-    return nil
+    return pet_name[0]
+end
+
+# 11. I think im cheating with the return nil line?
+def find_pet_by_name2(unit, name)
+  for pet in unit[:pets]
+    if pet[:name] != name
+      return nil
+    end
+  end
 end
 
 # 12.
-# def remove_pet_by_name(unit, name)
-#   name_to_remove = []
-#   for pet in unit[:pets]
-#     if pet[:name] == name
-#       name_to_remove += name
+def remove_pet_by_name (unit, name)
+  for pet in unit[:pets]
+    if pet[:name] == name
+      unit[:pets].delete(pet)
+    end
+  end
+end
+
+# 13. Not sure if this is too simple and answe and
+# should be doing more checks?
+def add_pet_to_stock(unit, new_pet)
+   unit[:pets] << new_pet
+end
+
+# 14.
+def customer_pet_count(customer)
+  pet_count = []
+  for person in customer
+    pet_count += customer[:pets]
+  end
+    return pet_count.count
+end
+
+# 15.
+# def add_pet_to_customer(customer, new_pet)
+#   # add customer to @customers at index 0
+#
+#   # add pet to customer so pet count of customers =1
+# end
+
+# 16.
+def customer_can_afford_pet1(customer, new_pet)
+  customer_funds = []
+  for person in customer
+    customer_funds << customer[:cash]
+  end
+  customer_funds.sum <= new_pet[:price]
+end
+
+# 17.
+def customer_can_afford_pet2(customer, new_pet)
+  customer_funds = []
+  for person in customer
+    customer_funds << customer[:cash]
+  end
+  customer_funds.sum >= new_pet[:price]
+end
+
+# Above question split into 2 methods, don't
+# understand why below doesn't work as one for
+# both tests?
+
+# def customer_can_afford_pet(customer, new_pet)
+#   customer_funds = []
+#   for person in customer
+#     customer_funds << customer[:cash]
+#   end
+#     if customer_funds.sum <= new_pet[:price]
+#       return false
+#     else
+#       customer_funds.sum >=new_pet[:price]
+#       return true
 #     end
 #   end
-#   return name_to_remove.pop(name)
+
+# 18.
+# def sell_pet_to_customer(unit, customer, name)
+#  pet_to_sell = []
+#    # find pet in shop
+#   for pet in unit[:pets]
+#     if pet[:name] = name
+#       pet_to_sell << pet
+#     end
+#   end
+#   # move pet to customer
+#
+#   # pet sold increases
+#
+#   # price of pet deducted from customer and added to
+#   # total_cash
 # end
