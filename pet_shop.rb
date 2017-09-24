@@ -79,7 +79,7 @@ def remove_pet_by_name (unit, name)
   end
 end
 
-# 13. Not sure if this is too simple and answe and
+# 13. Not sure if this is too simple and answer and
 # should be doing more checks?
 def add_pet_to_stock(unit, new_pet)
    unit[:pets] << new_pet
@@ -96,60 +96,28 @@ end
 
 # 15.
 # def add_pet_to_customer(customer, new_pet)
-#   # add customer to @customers at index 0
-#
-#   # add pet to customer so pet count of customers =1
+#   customer[:pets] << new_pet
 # end
 
-# 16.
-def customer_can_afford_pet1(customer, new_pet)
-  customer_funds = []
-  for person in customer
-    customer_funds << customer[:cash]
-  end
-  customer_funds.sum <= new_pet[:price]
-end
+ # 16/17. Can't work out why this is wrong?
+ # def customer_can_afford_pet(customer, new_pet)
+ #   customer_funds = []
+ #   for person in customer
+ #     customer_funds << customer[:cash]
+ #   end
+ #   return false if customer_funds.sum <= new_pet[:price]
+ #   return true if customer_funds.sum >= new_pet[:price]
+ # end
 
-# 17.
-def customer_can_afford_pet2(customer, new_pet)
-  customer_funds = []
-  for person in customer
-    customer_funds << customer[:cash]
-  end
-  customer_funds.sum >= new_pet[:price]
-end
-
-# Above question split into 2 methods, don't
-# understand why below doesn't work as one for
-# both tests?
-
-# def customer_can_afford_pet(customer, new_pet)
-#   customer_funds = []
-#   for person in customer
-#     customer_funds << customer[:cash]
-#   end
-#     if customer_funds.sum <= new_pet[:price]
-#       return false
-#     else
-#       customer_funds.sum >=new_pet[:price]
-#       return true
-#     end
-#   end
-
-# 18.
+# 18. Got very lost here...
 # def sell_pet_to_customer(unit, customer, name)
-#  pet_to_sell = []
-#    # find pet in shop
-#   for pet in unit[:pets]
-#     if pet[:name] = name
-#       pet_to_sell << pet
-#     end
-#   end
-#   # move pet to customer
-#
-#   # pet sold increases
-    # unit[:admin][:pets_sold] += 1
-#
-#   # price of pet deducted from customer and added to
-#   # total_cash
+#  pet_found = []
+#    for pet in unit[:pets]
+#      if pet[:name] == name
+#        pet_found << pet
+#      end
+#    end
+#   return pet_found.count += unit[:admin][:pets_sold]
+#   return customer[:cash] += unit[:admin][:total_cash]
+#   return "insufficient funds" if customer[:cash] < pet[:price]
 # end
