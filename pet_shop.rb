@@ -8,14 +8,9 @@ def total_cash(value)
   return value[:admin][:total_cash]
 end
 
-# 3.
-def add_or_remove_cash(unit, added)
-  unit[:admin][:total_cash] += added
-end
-
-# 4.
-def add_or_remove_cash(unit, minus)
-  unit[:admin][:total_cash] += minus
+# 3/4.
+def add_or_remove_cash(unit, cash)
+  unit[:admin][:total_cash] += cash
 end
 
 # 5.
@@ -33,7 +28,7 @@ def stock_count(unit)
   return unit[:pets].length()
 end
 
-# 8.
+# 8/9.
 def pets_by_breed(unit, breed)
   num_of_breed =[]
   for pet in unit[:pets]
@@ -44,16 +39,6 @@ def pets_by_breed(unit, breed)
   return num_of_breed
 end
 
-# 9.
-def pets_by_breed2(unit, breed)
-  not_found =[]
-    for pet in unit[:pets]
-     if pet[:breed] == breed
-       not_found << breed
-     end
-   end
-   return not_found
-end
 
 # 10/11.
 def find_pet_by_name(unit, name)
@@ -95,11 +80,11 @@ def customer_pet_count(customer)
 end
 
 # 15.
-# def add_pet_to_customer(customer, new_pet)
-#   customer[:pets] << new_pet
-# end
+def add_pet_to_customer(customer, new_pet)
+  customer[:pets] << new_pet
+end
 
- # 16/17. Can't work out why this is wrong?
+ # # 16/17. Can't work out why this is wrong?
  def customer_can_afford_pet(customer, new_pet)
    customer_funds = []
    for person in customer
