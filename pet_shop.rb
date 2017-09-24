@@ -100,14 +100,14 @@ end
 # end
 
  # 16/17. Can't work out why this is wrong?
- # def customer_can_afford_pet(customer, new_pet)
- #   customer_funds = []
- #   for person in customer
- #     customer_funds << customer[:cash]
- #   end
- #   return false if customer_funds.sum <= new_pet[:price]
- #   return true if customer_funds.sum >= new_pet[:price]
- # end
+ def customer_can_afford_pet(customer, new_pet)
+   customer_funds = []
+   for person in customer
+     customer_funds << customer[:cash]
+   end
+   return false if customer_funds.sum < new_pet[:price]
+   return true if customer_funds.sum >= new_pet[:price]
+ end
 
 # 18. Got very lost here...
 # def sell_pet_to_customer(unit, customer, name)
