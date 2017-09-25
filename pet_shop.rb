@@ -41,22 +41,29 @@ end
 
 
 # 10/11.
+# def find_pet_by_name(unit, name)
+#   pet_name = []
+#     for pet in unit[:pets]
+#       if pet[:name] == name
+#         pet_name << pet
+#       end
+#     end
+#     return pet_name[0]
+#     if name != pet[:name]
+#       return nil
+#     end
+# end
+
 def find_pet_by_name(unit, name)
-  pet_name = []
-    for pet in unit[:pets]
-      if pet[:name] == name
-        pet_name << pet
-      end
-    end
-    return pet_name[0]
-    if name != pet[:name]
-      return nil
-    end
+  for pet in unit[:pets]
+    return pet if pet[:name] == name
+  end
+  return nil
 end
 
 
 # 12.
-def remove_pet_by_name (unit, name)
+def remove_pet_by_name(unit, name)
   for pet in unit[:pets]
     if pet[:name] == name
       unit[:pets].delete(pet)
@@ -64,19 +71,18 @@ def remove_pet_by_name (unit, name)
   end
 end
 
-# 13. Not sure if this is too simple and answer and
-# should be doing more checks?
+# def remove_pet_by_name(unit, name)
+# unit[:pets].delete(find_pet_by_name(unit, name))
+# end
+
+# 13.
 def add_pet_to_stock(unit, new_pet)
    unit[:pets] << new_pet
 end
 
 # 14.
 def customer_pet_count(customer)
-  pet_count = []
-  for person in customer
-    pet_count += customer[:pets]
-  end
-    return pet_count.count
+  return customer[:pets].length()
 end
 
 # 15.
@@ -84,25 +90,18 @@ def add_pet_to_customer(customer, new_pet)
   customer[:pets] << new_pet
 end
 
- # # 16/17. Can't work out why this is wrong?
- def customer_can_afford_pet(customer, new_pet)
-   customer_funds = []
-   for person in customer
-     customer_funds << customer[:cash]
-   end
-   return false if customer_funds.sum < new_pet[:price]
-   return true if customer_funds.sum >= new_pet[:price]
- end
+ # # 16/17.
+def customer_can_afford_pet(customer, new_pet)
+  customer[:cash] >= new_pet[:price] ? true : false
+end
 
-# 18. Got very lost here...
-# def sell_pet_to_customer(unit, customer, name)
-#  pet_found = []
-#    for pet in unit[:pets]
-#      if pet[:name] == name
-#        pet_found << pet
-#      end
-#    end
-#   return pet_found.count += unit[:admin][:pets_sold]
-#   return customer[:cash] += unit[:admin][:total_cash]
-#   return "insufficient funds" if customer[:cash] < pet[:price]
-# end
+# 18.
+def sell_pet_to_customer(pet_shop, pet, customer)
+  if (pet != nil)
+    if customer_can_afford_pet(customer, pet)
+  add_pet_to_customer(customer, pet)
+  increase_pets_sold(pet_shop, 1)
+  add_or_remove_cash(pet_shop, pet[:price])
+    end
+  end
+end
